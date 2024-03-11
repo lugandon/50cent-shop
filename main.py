@@ -4,17 +4,21 @@ class Fork:
         self.length = length
         self.color = color
 
+
 class Spoon:
     def __init__(self, material, length, color):
         self.material = material
         self.length = length
         self.color = color
 
+
 class Knife:
-    def __init__(self, material, length, color):
+    def __init__(self, material, length, monotonous, color):
         self.material = material
         self.length = length
+        self.monotonous = monotonous
         self.color = color
+
 
 class Spatula:
     def __init__(self, material, monotonous, color):
@@ -22,33 +26,30 @@ class Spatula:
         self.monotonous = monotonous
         self.color = color
 
-def fork_options():
-    pass
 
-def spoon_options():
-    pass
-
-def knife_options():
-    pass
-
-def spatula_options():
-    pass
+def create_utensil():
+    print("Creating utensil: \n")
 
 
 def choose_utensil():
-    print('Fork, ', 'Spoon, ', 'Knife, ', 'Spatula')
-    utensil = input("Which utensil You want to buy? ").strip().lower()
-    match utensil:
-        case 'fork':
-            fork_options()
-        case 'spoon':
-            spoon_options()
-        case 'knife':
-            knife_options()
-        case 'spatula':
-            spatula_options()
-        case _:
-            print("You have to choose one from given options.")
+    options = ['fork', 'spoon', 'knife', 'spatula']
+    created = False
+
+    print(', '.join(options))
+
+    utensil = input("Which utensil do you want to buy? ").strip().lower()
+
+    # There we go through the all utensils to make sure User chose the existent utensil
+    for option in options:
+        if utensil == option:
+            created = True
+            break
+
+    if created:
+        print("You have chosen -", option.capitalize())
+        create_utensil()
+    else:
+        print("Sorry, you chose the wrong option.")
 
 
 def main():
